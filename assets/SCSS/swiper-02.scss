@@ -14,6 +14,7 @@
 }
 
 .container {
+	padding: 0 20px;
 	margin: 0 auto;
 	max-width: 1023px;
 }
@@ -22,70 +23,91 @@
 	padding-top: 50px;
 }
 
+.swiper-container {
+	padding: 15px;
+	width: 100%;
 
-.swiper-wrapper {
-	display: grid;
-	padding: 10px;
-    height: 610px;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-gap: 10px;
-    grid-template-areas:
-        "left top1 top2"
-        "left bottom bottom";
+	.swiper-wrapper {
+		display: grid;
+		height: 610px;
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 2fr 1fr 1fr;
+		grid-gap: 10px;
+		grid-template-areas:
+			"left top1 top2"
+			"left bottom bottom";
 
-	.swiper-slide {
-		padding: 25px;
-		background: #e2e5ff;
-		box-shadow: 0 3px 10px #4e5fdb;
+		.swiper-slide {
+			padding: 25px;
+			background: #e2e5ff;
+			box-shadow: 0 3px 10px #4e5fdb;
 
-		.listThumnail {
-			width: 100%;
-			height: 250px;
-			background: url(../images/sample1.png) no-repeat 50% 50%;
-			background-size: cover;
-		}
-
-		.listInfo {
-			padding-top: 35px;
-
-			.listTit {
-				display: block;
-				color: #7c89ff;
-				font-size: 22px;
-				font-weight: 700;
+			.listThumnail {
+				width: 100%;
+				height: 250px;
+				background: url(../images/sample1.png) no-repeat 50% 50%;
+				background-size: cover;
 			}
-			.listCon {
-				display: block;
-				padding-top: 10px;
-				height: 220px;
-				color: #4e5fdb;
-				font-size: 15px;
-			}
-			.listDate {
-				color: #4e5fdb;
-				font-size: 16px;
-				font-weight: 700;
-			}
-		}
 
-		&.slide01 {
-			grid-area: left;
-		}
-		&.slide02 {
-			grid-area: top1;
-		}
-		&.slide03 {
-			grid-area: top2;
-		}
-		&.slide04 {
-			grid-area: bottom;
+			.listInfo {
+				padding-top: 35px;
+
+				.listTit {
+					display: block;
+					color: #7c89ff;
+					font-size: 22px;
+					font-weight: 700;
+				}
+				.listCon {
+					display: block;
+					padding-top: 10px;
+					height: 220px;
+					color: #4e5fdb;
+					font-size: 15px;
+				}
+				.listDate {
+					color: #4e5fdb;
+					font-size: 16px;
+					font-weight: 700;
+				}
+			}
+
+			&.slide01 {
+				grid-area: left;
+			}
+			&.slide02 {
+				grid-area: top1;
+			}
+			&.slide03 {
+				grid-area: top2;
+			}
+			&.slide04 {
+				grid-area: bottom;
+			}
 		}
 	}
+}
+
+.navigation {
+	display: none;
 }
 
 .slide02 .listInfo,
 .slide03 .listInfo,
 .slide04 .listInfo {
 	display: none;
+}
+
+@media (max-width: 900px) {
+
+	.slide02 .listInfo,
+	.slide03 .listInfo,
+	.slide04 .listInfo {
+		display: block;
+	}
+
+	.navigation {
+		display: block;
+	}
+
 }

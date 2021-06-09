@@ -26,52 +26,102 @@
 
 		<main id="main">
 			<div class="container">
-				<div class="swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide slide01">
-							<div class="list">
-								<div class="listThumnail"></div>
-								<div class="listInfo">
-									<span class="listTit">슬라이더 01 제목</span>
-									<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
-									<span class="listDate">2021.06.07</span>
+				<div class="photoContainer">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide slide01">
+								<div class="list">
+									<div class="listThumnail"></div>
+									<div class="listInfo">
+										<span class="listTit">슬라이더 01 제목</span>
+										<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
+										<span class="listDate">2021.06.07</span>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide slide02">
+								<div class="list">
+									<div class="listThumnail"></div>
+									<div class="listInfo">
+										<span class="listTit">슬라이더 01 제목</span>
+										<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
+										<span class="listDate">2021-06-07</span>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide slide03">
+								<div class="list">
+									<div class="listThumnail"></div>
+									<div class="listInfo">
+										<span class="listTit">슬라이더 01 제목</span>
+										<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
+										<span class="listDate">2021-06-07</span>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide slide04">
+								<div class="list">
+									<div class="listThumnail"></div>
+									<div class="listInfo">
+										<span class="listTit">슬라이더 01 제목</span>
+										<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
+										<span class="listDate">2021-06-07</span>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="swiper-slide slide02">
-							<div class="list">
-								<div class="listThumnail"></div>
-								<div class="listInfo">
-									<span class="listTit">슬라이더 01 제목</span>
-									<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
-									<span class="listDate">2021-06-07</span>
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide slide03">
-							<div class="list">
-								<div class="listThumnail"></div>
-								<div class="listInfo">
-									<span class="listTit">슬라이더 01 제목</span>
-									<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
-									<span class="listDate">2021-06-07</span>
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide slide04">
-							<div class="list">
-								<div class="listThumnail"></div>
-								<div class="listInfo">
-									<span class="listTit">슬라이더 01 제목</span>
-									<p class="listCon">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium esse voluptate beatae accusamus facilis vitae, quia voluptatem consequatur error labore itaque! Quos totam explicabo laboriosam non saepe, fuga asperiores nemo!</p>
-									<span class="listDate">2021-06-07</span>
-								</div>
-							</div>
-						</div>
+					</div>
+
+					<div class="navigation">
+						<button class="arrows prev" type="button" aria-label="이전 슬라이더">&lt;</button>
+						<button class="arrows next" type="button" aria-label="다음 슬라이더">&gt;</button>
 					</div>
 				</div>
 			</div>
 		</main>
 	</div>
+
+	<script>
+		(function() { //익명함수
+
+			console.log(RESPONSIVE_SLIDER.slider); //undefined
+
+			const RESPONSIVE_SLIDER = {
+				slider: undefined, //키: 값
+				init: function() {
+					const dom_width = document.body.offsetWidth;
+					const tbl_width = 900;
+
+					if ( dom_width <= tbl_width && this.slider == undefined ) {
+						this.slider = new Swiper('.photoContainer .swiper-container', {
+							slidesPerView: 1,
+							navigation: {
+								prevEl: '.photoContainer .prev',
+								nextEl: '.photoContainer .next',
+							}
+						});
+
+					} else if ( dom_width > tbl_width && this.slider !== undefined ) {
+						this.slider.destroy(true, true);
+						this.slider = undefined;
+					} else {
+						return;
+					}
+				}
+			}
+
+			// 최초 실행
+			RESPONSIVE_SLIDER.init();
+
+			// resize에 따른 실행
+			let timer;
+			window.addEventListener('resize', function() {
+				clearTimeout(timer);
+				timer = setTimeout(function() {
+					RESPONSIVE_SLIDER.init();
+				}, 200);
+			});
+		})();
+	</script>
 </body>
 </html>
