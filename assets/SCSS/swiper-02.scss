@@ -1,5 +1,8 @@
 #wrap {
-	padding: 100px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	height: 100vh;
 	background: #edeeff;
 }
@@ -99,6 +102,26 @@
 }
 
 @media (max-width: 900px) {
+	.photoContainer {
+		position: relative;
+
+		.swiper-wrapper {
+			display: flex;
+			height: 300px;
+
+			.list {
+				display: flex;
+
+				.listInfo {
+					padding: 15px;
+
+					.listCon {
+						height: 170px;
+					}
+				}
+			}
+		}
+	}
 
 	.slide02 .listInfo,
 	.slide03 .listInfo,
@@ -108,6 +131,21 @@
 
 	.navigation {
 		display: block;
+		position: absolute;
+		left: 50%;
+		bottom: -3%;
+		z-index: 1;
+
+		.arrows {
+			width: 50px;
+			height: 50px;
+			color: #7c89ff;
+			background: #e2e5ff;
+			box-shadow: 0 3px 10px #4e5fdb;
+			font-size: 18px;
+			font-weight: 700;
+			border-radius: 50px;
+		}
 	}
 
 }

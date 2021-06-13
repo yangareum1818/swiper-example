@@ -84,8 +84,6 @@
 	<script>
 		(function() { //익명함수
 
-			console.log(RESPONSIVE_SLIDER.slider); //undefined
-
 			const RESPONSIVE_SLIDER = {
 				slider: undefined, //키: 값
 				init: function() {
@@ -96,8 +94,8 @@
 						this.slider = new Swiper('.photoContainer .swiper-container', {
 							slidesPerView: 1,
 							navigation: {
-								prevEl: '.photoContainer .prev',
-								nextEl: '.photoContainer .next',
+								prevEl: '.photoContainer .arrows.prev',
+								nextEl: '.photoContainer .arrows.next',
 							}
 						});
 
